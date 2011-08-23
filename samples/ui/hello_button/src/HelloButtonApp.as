@@ -9,6 +9,7 @@ package
 	 * You can add a callback to a button that will be triggered when it is pressed
 	 * Arbitrary data objects of any type can be attached to buttons
 	 */
+	[SWF( backgroundColor="0xCCCCCC", frameRate="60", width="110", height="50" )]
 	public class HelloButtonApp extends Sprite
 	{
 		public function HelloButtonApp()

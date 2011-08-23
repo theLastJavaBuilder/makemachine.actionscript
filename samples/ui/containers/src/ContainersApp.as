@@ -11,7 +11,7 @@ package
 	/**
 	 * Demonstrates the basic usage of XBox and YBox containers 
 	 */
-	[SWF( backgroundColor="0xCCCCCC", frameRate="60", width="150", height="190" )]
+	[SWF( backgroundColor="0xCCCCCC", frameRate="60", width="620", height="130" )]
 	public class ContainersApp extends Sprite
 	{
 		public function ContainersApp()

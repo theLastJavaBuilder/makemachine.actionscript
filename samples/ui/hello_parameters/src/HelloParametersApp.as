@@ -7,12 +7,12 @@ package
 	import makemachine.display.ui.Slider;
 	import makemachine.parameters.Parameter;
 	
-	[SWF( backgroundColor="0xAAAAAA", frameRate="60", width="150", height="190" )]
+	[SWF( backgroundColor="0xAAAAAA", frameRate="60", width="160", height="170" )]
 	public class HelloParametersApp extends Sprite
 	{
 		public function HelloParametersApp()
 		{
-			var slider:Slider = new Slider( this, 5, 5 );
+			var slider:Slider = new Slider( this, 10, 10 );
 			
 			// -- Notice how when the slider is adjusted the value turns from "Hz" to "kHz"
 			var param1:Parameter = new Parameter( "Frequency", 200, 2000, 250 );
@@ -33,7 +33,11 @@ package
 		
 		protected function onParamUpdate( event:Event ):void 
 		{
-			trace( 'param value change' );
+			if( event.target is Parameter )
+			{
+				var param:Parameter = event.target as Parameter;
+				trace( int( param.value ) );
+			}
 		}
 	}
 }

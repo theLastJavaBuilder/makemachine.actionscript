@@ -111,7 +111,7 @@ package makemachine.display.ui
 			_fourierTransform = new BoolParameter( 'Fourier', false );
 			
 			_width = Factory.PANEL_WIDTH_LG * 2
-			_height = Factory.PANEL_WIDTH_LG;
+			_height = Factory.PANEL_WIDTH_LG + 3;
 			
 			background = Factory.defaultBackground( this, 0, 0 );
 			background.setSize( _width, _height );
