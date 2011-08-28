@@ -11,11 +11,11 @@ package makemachine.display.ui
 	import makemachine.utils.*;
 	
 	/**
-	 * A horizontal slider that controls the value of a single parameter
+	 * A horizontal slider that controls the value of a single progress
 	 */
-	public class Slider extends InterfaceElement
+	public class ProgressBar extends InterfaceElement
 	{
-		public function Slider( container:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0 )
+		public function ProgressBar( container:DisplayObjectContainer=null, xpos:Number=0, ypos:Number=0 )
 		{
 			super( container, xpos, ypos );
 		}
@@ -30,23 +30,22 @@ package makemachine.display.ui
 		protected var gutter:RectangleShape;
 		protected var fill:RectangleShape;
 		protected var labelField:BitmapText;
-		protected var valueField:BitmapText;
 		
 		// -------------------------------------------------------
 		//	-- getter/setter
 		// -------------------------------------------------------
 		
-		protected var _parameter:Parameter;
-		public function get parameter():Parameter { return _parameter }
-		public function set parameter( newParameter:Parameter ):void
+		protected var _progress:Parameter;
+		public function get progress():Parameter { return _progress }
+		public function set progress( newParameter:Parameter ):void
 		{
-			if( _parameter ) 
+			if( _progress ) 
 			{
-				_parameter.removeEventListener( Event.CHANGE, onParamUpdate );
+				_progress.removeEventListener( Event.CHANGE, onParamUpdate );
 			}
 			
-			_parameter = newParameter;
-			_parameter.addEventListener( Event.CHANGE, onParamUpdate );
+			_progress = newParameter;
+			_progress.addEventListener( Event.CHANGE, onParamUpdate );
 			invalidate();
 		}
 		
@@ -67,13 +66,12 @@ package makemachine.display.ui
 			return super.measure();
 		}
 		
-		override public function toString():String { return 'Slider: ' + _parameter.name; }
+		override public function toString():String { return 'Slider: ' + _progress.name; }
 		
 		override public function validate(event:Event=null):void
 		{
 			super.validate();
 			labelField.validate();
-			valueField.validate();
 			fill.validate();
 			gutter.validate();
 			background.validate();
@@ -89,29 +87,9 @@ package makemachine.display.ui
 		// -- event handlers
 		// -------------------------------------------------------
 		
-		protected function onEnterFrame( event:Event ):void 
-		{
-			parameter.value = interpolate( gutter.mouseX / gutter.width, parameter.min, parameter.max );
-		}
-		
-		protected function onGutterMouseDown( event:MouseEvent ):void 
-		{
-			if( stage )
-			{
-				stage.addEventListener( Event.ENTER_FRAME, onEnterFrame );
-				stage.addEventListener( MouseEvent.MOUSE_UP, onStageMouseUp );
-			}
-		}
-		
 		protected function onParamUpdate( event:Event ):void 
 		{
 			invalidate();
-		}
-		
-		protected function onStageMouseUp( event:Event ):void 
-		{
-			stage.removeEventListener( Event.ENTER_FRAME, onEnterFrame );
-			stage.removeEventListener( MouseEvent.MOUSE_UP, onStageMouseUp );
 		}
 		
 		// -------------------------------------------------------
@@ -122,11 +100,11 @@ package makemachine.display.ui
 		{
 			super.create();
 			
-			parameter = new Parameter( 'Slider', 0, 1, .5 );
+			progress = new Parameter( 'Progress', 0, 1, .5 );
 			
 			background = Factory.defaultBackground( this, 0, 0 );
 			
-			labelField = Factory.singleLineField( this, Factory.ELEMENT_PADDING, Factory.ELEMENT_PADDING, 'primary', 'Slider' );
+			labelField = Factory.singleLineField( this, Factory.ELEMENT_PADDING, Factory.ELEMENT_PADDING, 'primary', 'Progress' );
 			labelField.textColor = Factory.TEXT_COLOR_1;
 			labelField.thickness = 100;
 			
@@ -135,28 +113,19 @@ package makemachine.display.ui
 			gutter.setSize( Factory.PANEL_WIDTH_LG - Factory.ELEMENT_PADDING * 2, 10 );
 			gutter.buttonMode = true;
 			
-			valueField = Factory.singleLineField( this, gutter.x + gutter.width + Factory.ELEMENT_PADDING, gutter.y + gutter.height + Factory.ELEMENT_PADDING, 'secondary' );
-			valueField.textColor = Factory.TEXT_COLOR_2;
-			valueField.thickness = 0;
-			
 			fill = new RectangleShape( this, gutter.x, gutter.y );
 			fill.fillColor = Factory.METER_FILL_COLOR_1;
 			fill.setSize( Factory.PANEL_WIDTH_LG - Factory.ELEMENT_PADDING * 2, 10 );
 			fill.mouseEnabled = 
 			fill.mouseChildren = false;
-			
-			gutter.addEventListener( MouseEvent.MOUSE_DOWN, onGutterMouseDown );
 		}
 		
 		override protected function draw():void 
 		{
 			super.draw();
 			
-			labelField.text = titleCase( _parameter.name, true );
-			valueField.text = Factory.formatParameterText( _parameter );
-			valueField.x = gutter.x + gutter.width -  valueField.width;
-			valueField.y = labelField.y + labelField.height - valueField.height;
-			fill.width = parameter.normalizedValue * gutter.width;
+			labelField.text = _progress.name;
+			fill.width = progress.normalizedValue * gutter.width;
 			background.setSize( Factory.PANEL_WIDTH_LG, Math.round( gutter.y + gutter.height + Factory.ELEMENT_PADDING  ));
 		}
 	}

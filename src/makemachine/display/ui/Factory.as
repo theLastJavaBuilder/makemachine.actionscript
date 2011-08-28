@@ -13,10 +13,10 @@ package makemachine.display.ui
 		public static var ELEMENT_PADDING:int = 5; 
 		
 		// -- space between components in xbox & ybox
-		public static var ELEMENT_SPACING:int = 5; 
+		public static var ELEMENT_SPACING:int = 1; 
 		
 		// -- element sizes
-		public static const PANEL_WIDTH_LG:int = 170;
+		public static const PANEL_WIDTH_LG:int = 140;
 		public static const PANEL_WIDTH_MD:int = ( PANEL_WIDTH_LG - ELEMENT_SPACING ) * .5;
 		public static const PANEL_WIDTH_SM:int = ( PANEL_WIDTH_LG - ELEMENT_SPACING * 3 ) * .25;
 		
