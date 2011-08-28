@@ -58,6 +58,8 @@ package makemachine.display
 		public function destroy():void 
 		{
 			// -- override w/ sub-class	
+			if( parent ) parent.removeChild( this );
+			removeEventListener( Event.ENTER_FRAME, validate );
 		}
 		
 		public function invalidate():void

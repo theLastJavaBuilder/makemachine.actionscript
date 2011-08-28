@@ -206,6 +206,7 @@ package makemachine.display.shapes
 		override public function destroy():void 
 		{
 			super.destroy();
+			g.clear();
 			graphics.clear();
 			if( _bitmapFill ) 
 			{

@@ -128,5 +128,15 @@ package makemachine.display.ui
 			fill.width = progress.normalizedValue * gutter.width;
 			background.setSize( Factory.PANEL_WIDTH_LG, Math.round( gutter.y + gutter.height + Factory.ELEMENT_PADDING  ));
 		}
+		
+		override public function destroy():void
+		{
+			super.destroy();
+			labelField.destroy();
+			background.destroy();
+			gutter.destroy();
+			fill.destroy();
+			_progress.removeEventListener( Event.CHANGE, onParamUpdate );
+		}
 	}
 }
