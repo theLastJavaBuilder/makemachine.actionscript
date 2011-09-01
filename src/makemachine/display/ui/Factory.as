@@ -1,14 +1,42 @@
 package makemachine.display.ui
 {
-	import flash.text.TextFieldAutoSize;
 	import flash.display.DisplayObjectContainer;
+	import flash.text.TextFieldAutoSize;
+	import flash.utils.Dictionary;
 	
-	import makemachine.display.text.BitmapText;
 	import makemachine.display.shapes.RectangleShape;
+	import makemachine.display.text.BitmapText;
 	import makemachine.parameters.Parameter;
 
 	public class Factory
 	{
+		public var elementPadding:int;
+		public var elementSpacing:int;
+		public var backgroundColor:uint;
+		public var backgroundAlpha:Number;
+		public var cornerRadius:int;
+		public var meterFillColor1:uint
+		public var meterFillColor2:uint;
+		public var textColor1:uint;
+		public var textColor2:uint;
+		public var mouseUpColor:uint;
+		public var mouseOverColor:uint;
+		
+		public function Factory()
+		{
+			elementPadding = ELEMENT_PADDING;
+			elementSpacing = ELEMENT_SPACING;
+			backgroundColor = BACKGROUND_COLOR;
+			backgroundAlpha = BACKGROUND_ALPHA;
+			cornerRadius = BACKGROUND_CORNER_RADIUS;
+			meterFillColor1 = METER_FILL_COLOR_1;
+			meterFillColor2 = METER_FILL_COLOR_2;
+			textColor1 = TEXT_COLOR_1;
+			textColor2 = TEXT_COLOR_2;
+			mouseUpColor = MOUSE_UP_COLOR;
+			mouseOverColor = MOUSE_OVER_COLOR;
+		}
+		
 		// -- padding inside an element
 		public static var ELEMENT_PADDING:int = 5; 
 		

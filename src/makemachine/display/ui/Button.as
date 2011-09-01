@@ -27,10 +27,9 @@ package makemachine.display.ui
 		protected var background:RectangleShape;
 		protected var labelField:BitmapText;
 		protected var label:Sprite;
+		protected var style:Factory;
 		protected var color1:ColorTransform;
 		protected var color2:ColorTransform;
-		protected var upColor:uint;
-		protected var overColor:uint;
 		
 		// -------------------------------------------------------
 		//	-- getter/setter
@@ -168,13 +167,13 @@ package makemachine.display.ui
 		
 		protected function onMouseOver( event:MouseEvent ):void 
 		{
-			background.fillColor = overColor;
+			background.fillColor = style.mouseOverColor;
 			label.transform.colorTransform = color1;
 		}
 		
 		protected function onMouseOut( event:MouseEvent ):void 
 		{
-			background.fillColor = upColor;
+			background.fillColor = style.mouseUpColor;
 			if( _selectable ) 
 			{
 				if( !_selected ) {
@@ -202,6 +201,8 @@ package makemachine.display.ui
 		{
 			super.create();
 			
+			style = new Factory();
+			
 			_autoSize = true;
 			_explicitWidth = 100;
 			_explicitHeight = 100;
@@ -209,11 +210,8 @@ package makemachine.display.ui
 			buttonMode = true;
 			mouseChildren = false;
 			
-			upColor = Factory.MOUSE_UP_COLOR;
-			overColor = Factory.MOUSE_OVER_COLOR;
-			
-			color1 = new ColorTransform( 0, 0, 0, 1, Factory.TEXT_COLOR_1 >> 16 & 0xFF, Factory.TEXT_COLOR_1 >> 8 & 0xFF, Factory.TEXT_COLOR_1 & 0xFF, 1 );
-			color2 = new ColorTransform( 0, 0, 0, 1, Factory.TEXT_COLOR_2 >> 16 & 0xFF, Factory.TEXT_COLOR_2 >> 8 & 0xFF, Factory.TEXT_COLOR_2 & 0xFF, 1 );
+			color1 = new ColorTransform( 0, 0, 0, 1, style.textColor1 >> 16 & 0xFF, style.textColor1 >> 8 & 0xFF, style.textColor1 & 0xFF, 1 );
+			color2 = new ColorTransform( 0, 0, 0, 1, style.textColor2 >> 16 & 0xFF, style.textColor2 >> 8 & 0xFF, style.textColor2 & 0xFF, 1 );
 			
 			label = new Sprite();
 			label.mouseEnabled = false;
@@ -244,12 +242,11 @@ package makemachine.display.ui
 			} else {
 				_explicitWidth = Math.max( _explicitWidth, w );
 				_explicitHeight = Math.max( _explicitHeight, h );
-				
 				background.setSize( _explicitWidth, _explicitHeight );
 			}
 			
 			label.x = ( background.width - label.width ) * .5;
-			label.y = ( background.height - label.height ) * .5;
+			label.y = ( background.height - label.height ) * .5
 		}
 	}
 }

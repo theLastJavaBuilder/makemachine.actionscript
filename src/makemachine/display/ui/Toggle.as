@@ -27,6 +27,7 @@ package makemachine.display.ui
 		protected var fill:EllipseShape;
 		protected var labelField:BitmapText;
 		protected var ring:RingShape;
+		protected var style:Factory;
 		
 		// -------------------------------------------------------
 		//	-- getter/setter
@@ -94,24 +95,23 @@ package makemachine.display.ui
 			
 			parameter = new BoolParameter( 'Toggle', false );
 			
-			background = new RectangleShape( this, 0, 0 );
-			background.fillAlpha = Factory.BACKGROUND_ALPHA;
-			background.fillColor = Factory.BACKGROUND_COLOR;
-			background.cornerRadius = Factory.BACKGROUND_CORNER_RADIUS;
-			background.setSize( Factory.PANEL_WIDTH_LG, 100 );
-			background.buttonMode = true;
+			style = new Factory();
 			
-			ring = new RingShape( this, Factory.ELEMENT_PADDING, Factory.ELEMENT_PADDING );
-			ring.fillColor = Factory.METER_FILL_COLOR_1;
+			background = Factory.defaultBackground( this );
+			background.buttonMode = true;
+			background.width = Factory.PANEL_WIDTH_LG;
+			
+			ring = new RingShape( this, style.elementPadding, style.elementPadding );
+			ring.fillColor = style.meterFillColor1;
 			ring.thickness = 2;
 			ring.mouseEnabled = false;
 			
 			fill = new EllipseShape( this, ring.x + 5, ring.y + 5 );
-			fill.setLineStyle( 2, Factory.METER_FILL_COLOR_2, 1 );
+			fill.setLineStyle( 2, style.meterFillColor2, 1 );
 			fill.mouseEnabled = false;
 			
 			labelField = Factory.singleLineField( this, 0, 0, 'primary', _parameter.name );
-			labelField.textColor = Factory.TEXT_COLOR_1;
+			labelField.textColor = style.textColor1;
 			
 			background.addEventListener( MouseEvent.MOUSE_DOWN, onMouseDown );
 		}
@@ -121,9 +121,9 @@ package makemachine.display.ui
 			super.draw();
 			
 			labelField.text = _parameter.name;
-			labelField.textColor = _parameter.value ? Factory.TEXT_COLOR_1 : Factory.TEXT_COLOR_2;
+			labelField.textColor = _parameter.value ? style.textColor1 : style.textColor2;
 			
-			ring.fillColor = _parameter.value ? Factory.METER_FILL_COLOR_1 : Factory.METER_FILL_COLOR_2;
+			ring.fillColor = _parameter.value ? style.meterFillColor1 : style.meterFillColor2;
 			ring.setSize( labelField.height, labelField.height );
 			fill.setSize( ring.height * .5, ring.height * .5 );
 			fill.x = ( ring.x + ring.width * .5 ) - fill.width * .5;
@@ -131,13 +131,13 @@ package makemachine.display.ui
 			
 			if( _parameter.value )
 			{
-				fill.fillColor = Factory.METER_FILL_COLOR_1;
+				fill.fillColor = style.meterFillColor1;
 			} else {
-				fill.fillColor = Factory.BACKGROUND_COLOR;
+				fill.fillColor = style.backgroundColor;
 			}
 			
-			background.height = labelField.height + Factory.ELEMENT_PADDING * 2;
-			labelField.x = ring.x + ring.width + Factory.ELEMENT_PADDING;
+			background.height = labelField.height + style.elementPadding * 2;
+			labelField.x = ring.x + ring.width + style.elementPadding;
 			labelField.y = ( ring.y + ring.height + 5 - labelField.height ) * .5;
 		}
 	}
