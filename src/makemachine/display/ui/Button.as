@@ -29,6 +29,8 @@ package makemachine.display.ui
 		protected var label:Sprite;
 		protected var color1:ColorTransform;
 		protected var color2:ColorTransform;
+		protected var upColor:uint;
+		protected var overColor:uint;
 		
 		// -------------------------------------------------------
 		//	-- getter/setter
@@ -166,13 +168,13 @@ package makemachine.display.ui
 		
 		protected function onMouseOver( event:MouseEvent ):void 
 		{
-			background.fillColor = Factory.MOUSE_OVER_COLOR;
+			background.fillColor = overColor;
 			label.transform.colorTransform = color1;
 		}
 		
 		protected function onMouseOut( event:MouseEvent ):void 
 		{
-			background.fillColor = Factory.MOUSE_UP_COLOR;
+			background.fillColor = upColor;
 			if( _selectable ) 
 			{
 				if( !_selected ) {
@@ -207,6 +209,9 @@ package makemachine.display.ui
 			buttonMode = true;
 			mouseChildren = false;
 			
+			upColor = Factory.MOUSE_UP_COLOR;
+			overColor = Factory.MOUSE_OVER_COLOR;
+			
 			color1 = new ColorTransform( 0, 0, 0, 1, Factory.TEXT_COLOR_1 >> 16 & 0xFF, Factory.TEXT_COLOR_1 >> 8 & 0xFF, Factory.TEXT_COLOR_1 & 0xFF, 1 );
 			color2 = new ColorTransform( 0, 0, 0, 1, Factory.TEXT_COLOR_2 >> 16 & 0xFF, Factory.TEXT_COLOR_2 >> 8 & 0xFF, Factory.TEXT_COLOR_2 & 0xFF, 1 );
 			
@@ -215,6 +220,7 @@ package makemachine.display.ui
 			label.mouseChildren = false;
 			
 			background = Factory.defaultBackground( this );
+			background.fillColor = Factory.MOUSE_UP_COLOR;
 			
 			labelField = Factory.singleLineField( label, 0, 0, 'primary', 'LabelButton' );
 			label.transform.colorTransform = color2;

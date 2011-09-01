@@ -36,7 +36,6 @@ package makemachine.display.ui
 		// -- button colors
 		public static var MOUSE_UP_COLOR:uint = 0x111111;
 		public static var MOUSE_OVER_COLOR:uint = 0x222222;
-		public static var MOUSE_DOWN_COLOR:uint = 0x11111;
 		
 		/**
 		 * Generates a default background shape
