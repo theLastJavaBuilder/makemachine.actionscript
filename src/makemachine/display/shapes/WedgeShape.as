@@ -5,8 +5,6 @@ package makemachine.display.shapes
 	
 	public class WedgeShape extends ShapeBase
 	{
-		protected var radius:Number;
-		
 		public function WedgeShape( container:DisplayObjectContainer = null, xpos:Number = 0, ypos:Number = 0 )
 		{
 			super( container, xpos, ypos );
@@ -17,6 +15,8 @@ package makemachine.display.shapes
 		//	-- properties
 		//
 		// -----------------------------------------------
+		
+		protected var radius:Number;
 		
 		// -----------------------------------------------
 		//	-- getter/setter
@@ -44,6 +44,7 @@ package makemachine.display.shapes
 		}
 		
 		protected var _startAngle:Number;
+		public function get startAngle():Number { return _startAngle; }
 		public function set startAngle( value:Number ):void 
 		{
 			if( _startAngle != value ) 
@@ -61,7 +62,7 @@ package makemachine.display.shapes
 		{
 			if( value != _width )
 			{
-				radius = value;
+				radius = value * .5;
 				_width = _height = value;
 				invalidate();
 			}
@@ -71,7 +72,7 @@ package makemachine.display.shapes
 		{
 			if( value != _height )
 			{
-				radius = value;
+				radius = value * .5;
 				_width = _height = value;				
 				invalidate();
 			}

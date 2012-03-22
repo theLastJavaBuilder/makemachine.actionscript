@@ -298,8 +298,6 @@
 			field.mouseWheelEnabled = false;
 			field.selectable = false;
 			field.useRichTextClipboard = false;
-			field.thickness = 100;
-			field.sharpness = 100;	
 		}
 		
 		override protected function draw():void

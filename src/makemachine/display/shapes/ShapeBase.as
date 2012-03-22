@@ -298,7 +298,7 @@ package makemachine.display.shapes
 			{
 				g.lineStyle( lineThickness, lineColor, 
 							 lineAlpha, false, LineScaleMode.NONE,
-							 CapsStyle.ROUND, JointStyle.ROUND  );
+							 CapsStyle.SQUARE, JointStyle.MITER  );
 			}
 		}
 	}

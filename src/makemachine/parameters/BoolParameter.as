@@ -23,6 +23,14 @@ package makemachine.parameters
 		
 		protected var _name:String;
 		public function get name():String { return _name; }
+		public function set name( value:String ):void 
+		{
+			if( _name != value )
+			{
+				_name = value;
+				dispatchEvent( new Event( Event.CHANGE ) );
+			}
+		}
 		
 		protected var _value:Boolean;
 		public function get value():Boolean { return _value; }

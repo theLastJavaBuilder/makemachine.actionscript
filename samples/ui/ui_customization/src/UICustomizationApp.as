@@ -62,7 +62,6 @@ package
 			btn.setText( 'Hello Button' );
 			btn.setExplicitSize( Factory.PANEL_WIDTH_LG, btn.height );
 			
-			
 		}
 	}
 }

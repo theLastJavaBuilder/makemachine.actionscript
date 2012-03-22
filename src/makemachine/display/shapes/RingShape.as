@@ -26,7 +26,7 @@ package makemachine.display.shapes
 		
 		override public function set width(value:Number):void 
 		{
-			if( _xradius != value )
+			if( _xradius * .5 != value )
 			{
 				_width = value;
 				_xradius = value * .5;
@@ -36,7 +36,7 @@ package makemachine.display.shapes
 		
 		override public function set height(value:Number):void 
 		{
-			if( _yradius != value ) 
+			if( _yradius * .5 != value ) 
 			{
 				_height = value;
 				_yradius = value * .5;
