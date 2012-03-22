@@ -5,19 +5,6 @@
 *settings/
 
 #Media Files
-*.mp3
-*.wav
-*.jpg
-*.png
-*.JPEG
-*.gif
-*.GIF
-*.ogg
-*.swf
-*.svg
-*.ttf
-*.otf
-*.font
 
 #Build Folders
 *bin/
