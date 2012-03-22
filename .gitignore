@@ -1,0 +1,31 @@
+#Flash Builder 
+*.actionScriptProperties
+*.flexProperties
+*.project
+*settings/
+
+#Media Files
+*.mp3
+*.wav
+*.jpg
+*.png
+*.JPEG
+*.gif
+*.GIF
+*.ogg
+*.swf
+*.svg
+*.ttf
+*.otf
+*.font
+
+#Build Folders
+*bin/
+*debug/
+*release/
+*resources/
+
+#OS-Files
+Thumbs.db
+*thumbs.db
+*.DS_Store
