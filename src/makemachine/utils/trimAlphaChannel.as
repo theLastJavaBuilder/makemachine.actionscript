@@ -4,7 +4,8 @@ package makemachine.utils
 	import flash.geom.*;
 	
 	/**
-	 * 
+	 * Trims transparent pixels around the bounding box on semi or non transparent pixels
+	 * @return Bitmap A new bitmap with transparent space trimmed
 	 */
 	public function trimAlphaChannel( original:Bitmap ):Bitmap 
 	{		
