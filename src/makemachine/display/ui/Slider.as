@@ -7,7 +7,7 @@ package makemachine.display.ui
 	import makemachine.display.InterfaceElement;
 	import makemachine.display.shapes.RectangleShape;
 	import makemachine.display.text.BitmapText;
-	import makemachine.parameters.Parameter;
+	import makemachine.parameters.NumericParameter;
 	import makemachine.utils.*;
 	
 	/**
@@ -36,9 +36,9 @@ package makemachine.display.ui
 		//	-- getter/setter
 		// -------------------------------------------------------
 		
-		protected var _parameter:Parameter;
-		public function get parameter():Parameter { return _parameter }
-		public function set parameter( newParameter:Parameter ):void
+		protected var _parameter:NumericParameter;
+		public function get parameter():NumericParameter { return _parameter }
+		public function set parameter( newParameter:NumericParameter ):void
 		{
 			if( _parameter ) 
 			{
@@ -122,7 +122,7 @@ package makemachine.display.ui
 		{
 			super.create();
 			
-			parameter = new Parameter( 'Slider', 0, 1, .5 );
+			parameter = new NumericParameter( 'Slider', 0, 1, .5 );
 			
 			background = Factory.defaultBackground( this, 0, 0 );
 			

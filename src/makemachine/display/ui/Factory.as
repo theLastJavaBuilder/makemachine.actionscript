@@ -6,7 +6,7 @@ package makemachine.display.ui
 	
 	import makemachine.display.shapes.RectangleShape;
 	import makemachine.display.text.BitmapText;
-	import makemachine.parameters.Parameter;
+	import makemachine.parameters.NumericParameter;
 
 	public class Factory
 	{
@@ -80,7 +80,7 @@ package makemachine.display.ui
 		/**
 		 * Generates nicely formatted parameter text
 		 */
-		public static function formatParameterText( parameter:Parameter ):String 
+		public static function formatParameterText( parameter:NumericParameter ):String 
 		{
 			var result:String;
 			

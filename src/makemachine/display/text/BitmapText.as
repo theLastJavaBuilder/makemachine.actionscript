@@ -246,7 +246,7 @@
 		{
 			if( value != super.x ) 
 			{
-				super.x = Math.round( value );
+				super.x = value
 				invalidate();
 			}
 		}
@@ -255,7 +255,7 @@
 		{
 			if( value != super.y ) 
 			{
-				super.y = Math.round( value );
+				super.y = value
 				invalidate();
 			}
 		}

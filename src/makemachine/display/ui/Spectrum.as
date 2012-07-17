@@ -35,8 +35,8 @@ package makemachine.display.ui
 		protected var _fourierTransform:BoolParameter;
 		public function get fourierTransform():BoolParameter { return _fourierTransform; }
 		
-		protected var _stretchFactor:Parameter;
-		public function get stretchFactor():Parameter { return _stretchFactor; }
+		protected var _stretchFactor:NumericParameter;
+		public function get stretchFactor():NumericParameter { return _stretchFactor; }
 		
 		// -------------------------------------------------------
 		//
@@ -107,7 +107,7 @@ package makemachine.display.ui
 		{
 			super.create();
 			
-			_stretchFactor = new Parameter( 'Stretch Factor', 0, 40, 10 );
+			_stretchFactor = new NumericParameter( 'Stretch Factor', 0, 40, 10 );
 			_fourierTransform = new BoolParameter( 'Fourier', false );
 			
 			_width = Factory.PANEL_WIDTH_LG * 2

@@ -6,11 +6,11 @@ package makemachine.parameters
 	import makemachine.utils.*;
 	
 	/**
-	 * A Parameter represents a single object, it can be given a name and min & max values
+	 * A Parameter represents a single numerical value, it can be given a name and min & max values
 	 */
-	public class Parameter extends EventDispatcher
+	public class NumericParameter extends EventDispatcher
 	{
-		public function Parameter( paramName:String, minimum:Number, maximum:Number, startValue:Number )
+		public function NumericParameter( paramName:String, minimum:Number, maximum:Number, initial:Number )
 		{
 			_name = paramName;
 			_min = minimum;
@@ -18,7 +18,7 @@ package makemachine.parameters
 			_units = '';
 			_patch = new Patch( this );
 			
-			value = startValue;
+			value = initial;
 		}
 		
 		// -------------------------------------------------------

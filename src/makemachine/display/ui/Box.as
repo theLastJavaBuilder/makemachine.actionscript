@@ -5,6 +5,7 @@ package makemachine.display.ui
 	
 	import makemachine.display.InterfaceElement;
 	import makemachine.display.shapes.RectangleShape;
+	import makemachine.utils.print;
 	
 	/**
 	 * Base class for vertical and horizontal stacking containers 
@@ -53,7 +54,8 @@ package makemachine.display.ui
 				
 				while ( numChildren > 0 )  
 				{
-					removeChildAt( 0 );
+					var child:DisplayObject = removeChildAt( 0 );
+					if( child is InterfaceElement ) InterfaceElement( child ).destroy();
 				}
 			}
 		}

@@ -7,7 +7,7 @@ package makemachine.display.ui
 	import makemachine.display.InterfaceElement;
 	import makemachine.display.shapes.RectangleShape;
 	import makemachine.display.text.BitmapText;
-	import makemachine.parameters.Parameter;
+	import makemachine.parameters.NumericParameter;
 	import makemachine.utils.*;
 	
 	/**
@@ -35,9 +35,9 @@ package makemachine.display.ui
 		//	-- getter/setter
 		// -------------------------------------------------------
 		
-		protected var _progress:Parameter;
-		public function get progress():Parameter { return _progress }
-		public function set progress( newParameter:Parameter ):void
+		protected var _progress:NumericParameter;
+		public function get progress():NumericParameter { return _progress }
+		public function set progress( newParameter:NumericParameter ):void
 		{
 			if( _progress ) 
 			{
@@ -100,7 +100,7 @@ package makemachine.display.ui
 		{
 			super.create();
 			
-			progress = new Parameter( 'Progress', 0, 1, .5 );
+			progress = new NumericParameter( 'Progress', 0, 1, .5 );
 			
 			background = Factory.defaultBackground( this, 0, 0 );
 			

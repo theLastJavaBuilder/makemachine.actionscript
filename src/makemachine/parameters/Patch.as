@@ -1,15 +1,12 @@
 package makemachine.parameters
 {
-	/**
-	 * 
-	 */
 	public class Patch implements IGenerator
 	{
 		public static const OP_ADD_AND_MULTIPLY:int = 1;
 		public static const OP_SUBTRACT_AND_MULTIPLY:int = 2;
 		public static const OP_MULTIPLY:int = 3;
 		
-		public function Patch( param:Parameter )
+		public function Patch( param:NumericParameter )
 		{
 			parameter = param;
 			position = -1; 
@@ -20,10 +17,10 @@ package makemachine.parameters
 		private var value:Number;
 		
 		protected var generator:IGenerator;
-		protected var parameter:Parameter;
+		protected var parameter:NumericParameter;
 		
 		protected var _generatorOperation:int;
-		public function set polarity( value:int ):void 
+		public function set polarity( value:int ):void
 		{
 			_generatorOperation = value;
 		}
@@ -39,8 +36,8 @@ package makemachine.parameters
 		{
 			if( generator )
 			{
-				if( position != bufferPosition )
-				{
+				//if( position != bufferPosition )
+				//{
 					var genValue:Number = generator.generate( bufferPosition );
 					var parameterValue:Number = parameter.value;
 					
@@ -62,7 +59,7 @@ package makemachine.parameters
 							value = parameter.value;
 							break;
 					}
-				}
+				//}
 				return value;
 			} else {
 				return parameter.value;
